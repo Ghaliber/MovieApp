@@ -3,6 +3,7 @@ import './App.css';
 import Nav from './Nav'
 import MovieBox from './MovieBox'
 import StarRating from './StarRating'
+import Spinners from './Spinner'
 
 
 let movies = [{
@@ -29,9 +30,18 @@ class App extends React.Component{
     this.state = {
       movies: movies,
       rate: 1,
-      text: ''
+      text: '',
+      loading: true
     }
+    setTimeout(() => {
+      this.setState({
+        loading: false
+      })
+      
+    }, 5000);
+
   }
+  
   Add = () => {
     let movieName = prompt('Please enter movie name')
     let movieLink = prompt('Please enter image link')
@@ -62,9 +72,11 @@ class App extends React.Component{
       <Nav input={x => this.input(x)}/>
       <StarRating count={this.state.rate} setRating={x => this.rateIt(x)}/>
       </div>
-      <MovieBox items={this.state.movies.filter(el => el.rating >= this.state.rate && el.name.toUpperCase().includes(this.state.text.toUpperCase().trim()))}/>
+      <MovieBox loading={this.state.loading} items={this.state.movies.filter(el => el.rating >= this.state.rate && el.name.toUpperCase().includes(this.state.text.toUpperCase().trim()))}/>
       <button onClick={ this.Add}>+</button>
       
+     
+     
     </div>
   )};
 }

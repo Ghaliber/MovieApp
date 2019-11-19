@@ -4,12 +4,13 @@ class StarRating extends React.Component {
         super(props)
         this.state={
             
+            
         }
     }
-    // ☆
-    // ★
+        // ☆
+        // ★
     render() {
-        
+
         let arr = []
         for(let i = 0; i<5; i++){
             if(i < this.props.count){

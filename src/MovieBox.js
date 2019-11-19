@@ -1,5 +1,6 @@
 import React from 'react'
 import StarRating from './StarRating'
+import Hoc from './Hoc'
 
 class MovieBox extends React.Component {
     constructor(props) {
@@ -29,4 +30,4 @@ class MovieBox extends React.Component {
         )
     }
 }
-export default MovieBox
+export default Hoc(MovieBox)
